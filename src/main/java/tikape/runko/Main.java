@@ -28,6 +28,7 @@ public class Main {
             Spark.port(Integer.valueOf(System.getenv("PORT")));
         }
         Database database = new Database("jdbc:sqlite:D:/Files/Dropbox/Git/db/reseptiarkisto.db");
+        database.init();
 
         AinesDao ainesDao = new AinesDao(database);
         ReseptiDao reseptiDao = new ReseptiDao(database);
