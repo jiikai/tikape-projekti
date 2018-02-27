@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Otsikko</title>
+        <meta charset="ISO-8859-1" />
+    </head>
+
+    <body>
+        <h1 th:text="${resepti.nimi}">Reseptin nimi</h1>
+        <h2 th:text="${resepti.annoksia}"> kpl</h2><h2> annosta</h2>
+        <span th:text="${resepti.ohje}"></span>
+        <ul>
+            <li th:each="ainesosa: ${ainesosat}">
+                <span th:text="${ainesosa}">ainesosatieto</span>
+            </li>
+        </ul>
+    </body>
+</html>

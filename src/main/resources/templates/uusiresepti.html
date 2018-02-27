@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Uuden reseptin lisäys</title>
+        <meta charset="ISO-8859-1" />
+    </head>
+
+    <body>
+        <b th:text="${resepti.nimi}">Reseptin nimi</b>
+        <br />
+        Annoksia: <span th:text="${resepti.annoksia}">annosten lukumäärä</span>
+        <br />
+        <span th:text="${resepti.vegaaninenString}">onko vegaaninen</span>
+        <br />
+        <ul>
+            <li th:each="resaines: ${resainekset}">
+                <span th:text="${resaines}">ainesosatieto</span>
+            </li>
+        </ul>
+        <form method="POST" action="/uusiresepti">
+            <select name="ainesId">
+                <option th:each="aines: ${ainekset}" th:value="${aines.id}" th:text="${aines.nimi}">
+                    aines
+                </option>
+            </select>
+            <label for="ainesMaara">Määrä: </label>
+            <input id="ainesMaara" type="number" name="ainesMaara" value="1"/>
+            <select name="yksikkoId">
+                <option th:each="yksikko: ${yksikot}" th:value="${yksikko}" th:text="${yksikko}">
+                    yksikko
+                </option>
+            </select>
+            <input type="submit"  name="lisää" value="Lisää reseptiin"/>
+        </form>
+            <textarea name="ohje" rows="30" cols="50" >
+            Kirjoita ohje tähän...
+            </textarea>
+        <form method="POST" action="/uusireseptitallenna">
+            <input type="submit" name="tallenna" value="Tallenna resepti tietokantaan"/>
+        </form>
+    </body>
+</html>

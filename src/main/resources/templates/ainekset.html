@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Otsikko</title>
+        <meta charset="ISO-8859-1" />
+    </head>
+
+    <body>
+        <form method="POST" action="/ainekset">
+            <input id="1" name="order" type="submit" value="Järjestä kategorioittain..." onclick="vaihdaTeksti()"/>
+        </form>
+        <script>
+            function vaihdaTeksti() {
+                if (document.getElementById(1).value === "Järjestä kategorioittain...") {
+                    document.getElementById(1).value = "Järjestä aakkosittain...";
+                } else {
+                    document.getElementById(1).value = "Järjestä kategorioittain...";
+                }
+            }
+        </script>
+        <ul>
+            <li th:each="aines: ${ainekset}">
+                 <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span></a>
+            </li>
+        </ul>
+        <h2>Lisää uusi ruoka-aine tietokantaan</h2>
+        <form method="POST" action="/ainekset">
+            <input type="text" name="nimi"/>
+            <select name="tyyppi">
+                  <option value="1">Hedelmät ja vihannekset</option>
+                  <option value="2">Palkokasvit</option>
+                  <option value="3">Pähkinät ja siemenet</option>
+                  <option value="4">Viljatuotteet</option>
+                  <option value="5">Muut kasvituotteet</option>
+                  <option value="6">Maitotuotteet</option>
+                  <option value="7">Lihatuotteet</option>
+                  <option value="8">Kala ja äyriäiset</option>
+                  <option value="9">Rasvat ja öljyt</option>
+                  <option value="10">Mausteet ja yrtit</option>
+                  <option value="11">Kastikkeet</option>
+                  <option value="12">Makeutus</option>
+                  <option value="13">Muut</option>
+            </select>
+            <input type="submit" value="Lisää"/>
+        </form>
+    </body>
+</html>

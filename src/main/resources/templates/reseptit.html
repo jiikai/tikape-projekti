@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Reseptit</title>
+        <meta charset="ISO-8859-1"/>
+    </head>
+
+    <body>
+        <h1>Klikkaa reseptiä avataksesi sen:</h1>
+
+        <ul>
+            <li th:each="resepti: ${reseptit}">
+                <span th:text="${resepti.nimi}">reseptin nimi</span> <a th:href="${'/resepti/' + resepti.id}">linkki</a>
+                
+            </li>
+        </ul>
+        <h2>Lisää uusi resepti tietokantaan</h2>
+        <form method="POST" action="/reseptit">
+            <label for="nimi">Reseptin nimi: </label>
+            <input id="nimi" type="text" name="nimi" required="required" />
+            <label for="annoksia">Annosten lukumäärä: </label>
+            <input id="annoksia" type="number" name="annostenMaara" value="1"/>
+            <input type="submit" value="Lisää ainesosia ja kirjoita ohje..."/>
+        </form>
+    </body>
+</html>

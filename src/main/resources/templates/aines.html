@@ -1,0 +1,20 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${aines.nimi}">Aineksen nimi </title>
+        <meta charset="ISO-8859-1" />
+    </head>
+
+    <body>
+        <h1 th:text="${aines.nimi}">Aineksen nimi</h1>
+        <h2>Kategoria: </h2><h2 th:text="${aines.tyyppiString}"> aineksen tyyppi</h2>
+		<h3>Aines esiintyy seuraavissa resepteissä: </h3>
+		<ul>
+                <li th:each="resepti: ${reseptit}">
+                    <span th:text="${resepti.nimi}">reseptin nimi</span> <a th:href="${'/resepti/' + resepti.id}">linkki</a>
+
+                </li>
+        </ul>
+    </body>
+</html>

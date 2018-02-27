@@ -12,8 +12,13 @@ public class Database {
         this.databaseAddress = databaseAddress;
     }
 
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(databaseAddress);
+    public static Connection getConnection() throws Exception {
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        if (dbUrl != null && dbUrl.length() > 0) {
+            return DriverManager.getConnection(dbUrl);
+        }
+
+        return DriverManager.getConnection("jdbc:sqlite:D:/Files/Dropbox/Git/db/reseptiarkisto.db");
     }
 
     public void init() {
@@ -33,6 +38,20 @@ public class Database {
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
             System.out.println("Error >> " + t.getMessage());
         }
+    }
+    
+    public int tableSize(String tableName) throws SQLException, Exception {
+        Connection c = this.getConnection();
+        PreparedStatement stmt = c.prepareStatement("SELECT * FROM " + tableName);
+        ResultSet rs = stmt.executeQuery();
+        int rowCount = 0;
+        while (rs.next()) {
+            rowCount++;
+        }
+        System.out.println(rowCount);
+        stmt.close();
+        c.close();
+        return rowCount;
     }
 
     private List<String> sqliteLauseet() {
