@@ -87,7 +87,7 @@ public class AinesDao implements Dao<Aines, Integer> {
         if (this.findOne(object.getId()) == null) {
             try (Connection conn = database.getConnection()) {
                 PreparedStatement stmt = conn.prepareStatement(
-                        "INSERT INTO Aines (id, tyyppi_id, nimi, vegaaninen) VALUES (?, ?, ?, ?)");
+                        "INSERT INTO Aines VALUES (?, ?, ?, ?)");
                 stmt.setInt(1, object.getId());
                 stmt.setInt(2, object.getTyyppi().ordinal() + 1);
                 stmt.setString(3, object.getNimi());

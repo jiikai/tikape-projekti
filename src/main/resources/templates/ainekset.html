@@ -7,8 +7,8 @@
     </head>
 
     <body>
-        <form method="POST" action="/ainekset">
-            <input id="1" name="order" type="submit" value="Järjestä kategorioittain..." onclick="vaihdaTeksti()"/>
+        <form method="POST" action="/aineksetjarjestys">
+            <input id="1" name="order" type="submit" value="Järjestä kategorioittain..." on onclick="vaihdaTeksti()"/>
         </form>
         <script>
             function vaihdaTeksti() {
@@ -26,7 +26,7 @@
         </ul>
         <h2>Lisää uusi ruoka-aine tietokantaan</h2>
         <form method="POST" action="/ainekset">
-            <input type="text" name="nimi"/>
+            <input type="text" name="nimi" required="required"/>
             <select name="tyyppi">
                   <option value="1">Hedelmät ja vihannekset</option>
                   <option value="2">Palkokasvit</option>

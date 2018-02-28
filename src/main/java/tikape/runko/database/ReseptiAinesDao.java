@@ -74,7 +74,7 @@ public class ReseptiAinesDao implements Dao<ReseptiAines, Integer> {
     public ReseptiAines saveOrUpdate(ReseptiAines object) throws SQLException {
             try (Connection conn = database.getConnection()) {
                 PreparedStatement stmt = conn.prepareStatement(
-                        "INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (?, ?, ?, ?, ?)");
+                        "INSERT INTO ReseptiAines VALUES (?, ?, ?, ?, ?)");
                 stmt.setInt(1, object.getResepti_id());
                 stmt.setInt(2, object.getAines_id());
                 stmt.setInt(3, object.getYksikko().ordinal() + 1);

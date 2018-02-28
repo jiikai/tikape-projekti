@@ -23,19 +23,22 @@ public class Main {
             .collect(Collectors.toCollection(ArrayList::new));
 
     public static void main(String[] args) throws Exception {
+			
         // asetetaan portti jos heroku antaa PORT-ympäristömuuttujan
         if (System.getenv("PORT") != null) {
             Spark.port(Integer.valueOf(System.getenv("PORT")));
         }
-        Database database = new Database("jdbc:sqlite:D:/Files/Dropbox/Git/db/reseptiarkisto.db");
-        database.init();
-
+				// asetetaan database
+				String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        if (dbUrl != null && dbUrl.length() > 0) {
+            Database database = new Database(dbUrl);
+        } else {
+						Database database = new Database("jdbc:sqlite:D:/Files/Dropbox/Git/db/reseptiarkisto.db");
+				}
+				
         AinesDao ainesDao = new AinesDao(database);
         ReseptiDao reseptiDao = new ReseptiDao(database);
         ReseptiAinesDao reseptiAinesDao = new ReseptiAinesDao(database);
-        
-//        System.out.println(reseptiDao.findAll());
-//        System.out.println(reseptiAinesDao.findAllByIngredient(6));
         
         Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -118,6 +121,12 @@ public class Main {
             ainesDao.saveOrUpdate(aines);
             
             res.redirect("/ainekset");
+            return "";
+        });
+				
+				Spark.post("/aineksetjarjestys", (req, res) -> {
+            jarjestysAakkosissa = !(jarjestysAakkosissa);
+						res.redirect(/ainekset);
             return "";
         });
 
