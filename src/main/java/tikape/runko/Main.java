@@ -121,7 +121,7 @@ public class Main {
             return "";
         });
         
-         Spark.post("/ainekset", (req, res) -> {
+         Spark.post("/aineksetuusijarjestys", (req, res) -> {
             int neworder = Integer.parseInt(req.queryParams("order"));
             order = neworder;         
             res.redirect("/ainekset");

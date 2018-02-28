@@ -16,7 +16,7 @@
         </form>
         <ul>
             <li th:each="aines: ${ainekset}">
-                <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span>  Kategoria: <span th:text="${aines.tyyppiString}">aineksen tyyppi</span></a>
+                <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span></a> - - Kategoria: <span th:text="${aines.tyyppiString}">aineksen tyyppi</span>
             </li>
         </ul>
         <h2>Lisää uusi ruoka-aine tietokantaan</h2>
