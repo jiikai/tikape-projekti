@@ -77,7 +77,7 @@ public class Main {
             aineksiaUudessaReseptissa++;
             reseptiAinesDao.saveOrUpdate(resaines);
             uusiResepti.setOhje(req.queryParams("ohje"));
-            reseptiDao.updateOhje(resepti);
+            reseptiDao.updateOhje(uusiResepti);
             if (!(ainesDao.findOne(resaines.getAines_id()).isVegaaninen())) {
                 uusiResepti.setVegaaninen(false);
             }

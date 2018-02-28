@@ -33,8 +33,10 @@
             </select>
             <input type="submit"  name="lisää" value="Lisää reseptiin"/>
         </form>
-            <textarea name="ohje" rows="30" cols="50" th:text="${resepti.ohje}">ohje</textarea>
+            
+            
         <form method="POST" action="/uusireseptitallenna">
+            <textarea name="ohje" rows="30" cols="50" th:text="${resepti.ohje}">ohje tähän</textarea>
             <input type="submit" value="Tallenna resepti tietokantaan"/>
         </form>
     </body>
