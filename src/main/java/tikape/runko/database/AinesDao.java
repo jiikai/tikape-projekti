@@ -93,6 +93,8 @@ public class AinesDao implements Dao<Aines, Integer> {
                 stmt.setString(3, object.getNimi());
                 stmt.setBoolean(4, object.isVegaaninen());
                 stmt.executeUpdate();
+                stmt.close();
+                conn.close();
             } catch (Exception ex) {
                 Logger.getLogger(AinesDao.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -109,6 +111,8 @@ public class AinesDao implements Dao<Aines, Integer> {
                     "DELETE FROM Aines WHERE id=?");
             stmt.setInt(1, key);
             stmt.executeUpdate();
+            stmt.close();
+            conn.close();
         } catch (Exception ex) {
             Logger.getLogger(AinesDao.class.getName()).log(Level.SEVERE, null, ex);
         }

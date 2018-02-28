@@ -97,6 +97,20 @@ public class ReseptiDao implements Dao<Resepti, Integer> {
             return this.findOne(object.getId());
         }
     }
+    
+    public void updateOhje(Resepti object) throws SQLException {
+        try (Connection conn = database.getConnection()) {
+                PreparedStatement stmt = conn.prepareStatement(
+                        "UPDATE Resepti SET ohje =? WHERE ohje=?");			
+                stmt.setString(1, object.getNimi());
+                stmt.setString(2, "");
+                stmt.executeUpdate();
+                stmt.close();
+                conn.close();
+            } catch (Exception ex) {
+                Logger.getLogger(ReseptiDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
 
     
     @Override

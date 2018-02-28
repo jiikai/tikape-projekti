@@ -101,6 +101,8 @@ public class ReseptiAinesDao implements Dao<ReseptiAines, Integer> {
                 stmt.setInt(1, key1);
                 stmt.setInt(2, key2);
                 stmt.executeUpdate();
+                stmt.close();
+                conn.close();
             }
     }
 
