@@ -28,13 +28,10 @@ public class Main {
         if (System.getenv("PORT") != null) {
             Spark.port(Integer.valueOf(System.getenv("PORT")));
         }
-				// asetetaan database
-				String dbUrl = System.getenv("JDBC_DATABASE_URL");
-        if (dbUrl != null && dbUrl.length() > 0) {
-            Database database = new Database(dbUrl);
-        } else {
-						Database database = new Database("jdbc:sqlite:D:/Files/Dropbox/Git/db/reseptiarkisto.db");
-				}
+        // asetetaan database
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        Database database = new Database(dbUrl);
+        
 				
         AinesDao ainesDao = new AinesDao(database);
         ReseptiDao reseptiDao = new ReseptiDao(database);
@@ -117,10 +114,10 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/ainekset", (req, res) -> {
-						if (req.queryParams("order").equals("Järjestä aakkosittain...") {
-								jarjestysAakkosissa = !(jarjestysAakkosissa);
-								res.redirect(/ainekset);
-						}
+            if (req.queryParams("order").equals("Järjestä aakkosittain...")) {
+                jarjestysAakkosissa = !(jarjestysAakkosissa);
+                res.redirect("/ainekset");
+            }
             Aines aines = new Aines(database.tableSize("Aines") + 1, Integer.parseInt(req.queryParams("tyyppi")), req.queryParams("nimi"));
             ainesDao.saveOrUpdate(aines);
             
