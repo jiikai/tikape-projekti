@@ -117,16 +117,14 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/ainekset", (req, res) -> {
+						if (req.queryParams("order").equals("Järjestä aakkosittain...") {
+								jarjestysAakkosissa = !(jarjestysAakkosissa);
+								res.redirect(/ainekset);
+						}
             Aines aines = new Aines(database.tableSize("Aines") + 1, Integer.parseInt(req.queryParams("tyyppi")), req.queryParams("nimi"));
             ainesDao.saveOrUpdate(aines);
             
             res.redirect("/ainekset");
-            return "";
-        });
-				
-				Spark.post("/aineksetjarjestys", (req, res) -> {
-            jarjestysAakkosissa = !(jarjestysAakkosissa);
-						res.redirect(/ainekset);
             return "";
         });
 

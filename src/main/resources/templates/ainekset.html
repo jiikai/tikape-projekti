@@ -8,14 +8,14 @@
 
     <body>
         <form method="POST" action="/aineksetjarjestys">
-            <input id="1" name="order" type="submit" value="Järjestä kategorioittain..." on onclick="vaihdaTeksti()"/>
+            <input id="1" name="order" type="submit" value="Järjestä kategorioittain/aakkosittain..." onclick="vaihdaTeksti()"/>
         </form>
         <script>
             function vaihdaTeksti() {
-                if (document.getElementById(1).value === "Järjestä kategorioittain...") {
+                if (document.getElementById(1).value === "Järjestä kategorioittain/aakkosittain...") {
                     document.getElementById(1).value = "Järjestä aakkosittain...";
                 } else {
-                    document.getElementById(1).value = "Järjestä kategorioittain...";
+                    document.getElementById(1).value = "Järjestä kategorioittain/aakkosittain...";
                 }
             }
         </script>
