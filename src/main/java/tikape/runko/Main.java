@@ -51,7 +51,7 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/reseptit", (req, res) -> {
-            Resepti resepti = new Resepti(database.tableSize("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "");
+            Resepti resepti = new Resepti(database.getFreeId("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "");
             uusiResepti = resepti;
             reseptiDao.saveOrUpdate(resepti);
 
@@ -114,7 +114,7 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/ainekset", (req, res) -> {
-            Aines aines = new Aines(database.tableSize("Aines") + 1, Integer.parseInt(req.queryParams("tyyppi")), req.queryParams("nimi"));
+            Aines aines = new Aines(database.getFreeId("Aines") + 1, Integer.parseInt(req.queryParams("tyyppi")), req.queryParams("nimi"));
             ainesDao.saveOrUpdate(aines);
             
             res.redirect("/ainekset");

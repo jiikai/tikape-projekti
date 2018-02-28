@@ -40,18 +40,19 @@ public class Database {
         }
     }
     
-    public int tableSize(String tableName) throws SQLException, Exception {
+    public int getFreeId(String tableName) throws SQLException, Exception {
         Connection c = this.getConnection();
-        PreparedStatement stmt = c.prepareStatement("SELECT * FROM " + tableName);
+        PreparedStatement stmt = c.prepareStatement("SELECT id FROM " + tableName);
         ResultSet rs = stmt.executeQuery();
-        int rowCount = 0;
+        int highest_id = 0;
         while (rs.next()) {
-            rowCount++;
+            if (rs.getInt("id") > highest_id) {
+                highest_id = rs.getInt("id");
+            }
         }
-        System.out.println(rowCount);
         stmt.close();
         c.close();
-        return rowCount;
+        return highest_id;
     }
 
     private List<String> sqliteLauseet() {
