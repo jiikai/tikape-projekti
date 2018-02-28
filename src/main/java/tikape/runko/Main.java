@@ -51,7 +51,7 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/reseptit", (req, res) -> {
-            Resepti resepti = new Resepti(database.getFreeId("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "");
+            Resepti resepti = new Resepti(database.getFreeId("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "Kirjoita ohje tähän...");
             uusiResepti = resepti;
             reseptiDao.saveOrUpdate(resepti);
 

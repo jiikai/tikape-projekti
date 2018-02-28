@@ -9,9 +9,9 @@
     <body>
         <h1 th:text="${resepti.nimi}">Reseptin nimi</h1>
         <span th:text="${resepti.annoksia}"> kpl</span> annosta
-        <br>
+        <br />
         <span th:text="${resepti.vegaaninenString}">onko vegaaninen</span>
-        <br>
+        <br />
         <span th:text="${resepti.ohje}">reseptin ohje</span>
         <ul>
             <li th:each="ainesosa: ${ainesosat}">
