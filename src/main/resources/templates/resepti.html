@@ -8,10 +8,11 @@
 
     <body>
         <h1 th:text="${resepti.nimi}">Reseptin nimi</h1>
-        <h2 th:text="${resepti.annoksia}"> kpl</h2><h2> annosta</h2>
+        <span th:text="${resepti.annoksia}"> kpl</span> annosta
+        <br>
         <span th:text="${resepti.vegaaninenString}">onko vegaaninen</span>
-        <br></br>
-        <span th:text="${resepti.ohje}"></span>
+        <br>
+        <span th:text="${resepti.ohje}">reseptin ohje</span>
         <ul>
             <li th:each="ainesosa: ${ainesosat}">
                 <span th:text="${ainesosa}">ainesosatieto</span>

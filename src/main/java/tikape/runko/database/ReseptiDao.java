@@ -101,9 +101,9 @@ public class ReseptiDao implements Dao<Resepti, Integer> {
     public void updateOhje(Resepti object) throws SQLException {
         try (Connection conn = database.getConnection()) {
                 PreparedStatement stmt = conn.prepareStatement(
-                        "UPDATE Resepti SET ohje =? WHERE ohje=?");			
-                stmt.setString(1, object.getNimi());
-                stmt.setString(2, "");
+                        "UPDATE Resepti SET ohje =? WHERE id=?");			
+                stmt.setString(1, object.getOhje());
+                stmt.setInt(2, object.getId());
                 stmt.executeUpdate();
                 stmt.close();
                 conn.close();
