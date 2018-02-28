@@ -1,62 +1,60 @@
 // Yksikko <<enum>> //
 
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("ML","millilitraa [tilavuus]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("TL", "teelusikallista (5 ml) [tilavuus]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("RKL", "ruokalusikallista (15 ml) [tilavuus]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("DL", "desilitraa (100 ml) [tilavuus]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("L", "litraa (10 dl) [tilavuus]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("G", "grammaa [paino]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("KG", "kilogrammaa [paino]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("KPL", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("PKT", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("PIENI", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("KESKIKOKOINEN", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("ISO", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("RIPAUS", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
-INSERT INTO Yksikko (nimi, kuvaus) VALUES ("LORAUS", "[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]");
+
+INSERT INTO Yksikko  VALUES (1, 'ML','millilitraa [tilavuus]');
+INSERT INTO Yksikko  VALUES (2, 'TL', 'teelusikallista (5 ml) [tilavuus]');
+INSERT INTO Yksikko  VALUES (3, 'RKL', 'ruokalusikallista (15 ml) [tilavuus]');
+INSERT INTO Yksikko  VALUES (4, 'DL', 'desilitraa (100 ml) [tilavuus]');
+INSERT INTO Yksikko  VALUES (5, 'L', 'litraa (10 dl) [tilavuus]');
+INSERT INTO Yksikko  VALUES (6, 'G', 'grammaa [paino]');
+INSERT INTO Yksikko  VALUES (7, 'KG', 'kilogrammaa [paino]');
+INSERT INTO Yksikko  VALUES (8, 'KPL', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (9, 'PKT', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (10,'PIENI', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (11, 'KESKIKOKOINEN', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (12, 'ISO', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (13,'RIPAUS', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
+INSERT INTO Yksikko  VALUES (14, 'LORAUS', '[ruoka-ainekohtaisia/suhteellisia mittayksiköitä]');
 
 // Tyyppi <<enum>> //
 
-INSERT INTO Tyyppi (nimi) VALUES ("Hedelmät ja vihannekset");
-INSERT INTO Tyyppi (nimi) VALUES ("Palkokasvit");
-INSERT INTO Tyyppi (nimi) VALUES ("Pähkinät ja siemenet");
-INSERT INTO Tyyppi (nimi) VALUES ("Viljatuotteet");
-INSERT INTO Tyyppi (nimi) VALUES ("Muut kasvistuotteet");
-INSERT INTO Tyyppi (nimi) VALUES ("Maitotuotteet");
-INSERT INTO Tyyppi (nimi) VALUES ("Lihatuotteet");
-INSERT INTO Tyyppi (nimi) VALUES ("Kala ja äyriäiset");
-INSERT INTO Tyyppi (nimi) VALUES ("Rasvat ja öljyt");
-INSERT INTO Tyyppi (nimi) VALUES ("Mausteet ja yrtit");
-INSERT INTO Tyyppi (nimi) VALUES ("Kastikkeet");
-INSERT INTO Tyyppi (nimi) VALUES ("Makeutus");
-INSERT INTO Tyyppi (nimi) VALUES ("Muut");
-
-UPDATE Tyyppi SET nimi="Makeutus" WHERE id='12';
+INSERT INTO Tyyppi  VALUES (1, 'Hedelmät ja vihannekset');
+INSERT INTO Tyyppi  VALUES (2, 'Palkokasvit');
+INSERT INTO Tyyppi  VALUES (3, 'Pähkinät ja siemenet');
+INSERT INTO Tyyppi  VALUES (4, 'Viljatuotteet');
+INSERT INTO Tyyppi  VALUES (5, 'Muut kasvistuotteet');
+INSERT INTO Tyyppi  VALUES (6, 'Maitotuotteet');
+INSERT INTO Tyyppi  VALUES (7, 'Lihatuotteet');
+INSERT INTO Tyyppi  VALUES (8, 'Kala ja äyriäiset');
+INSERT INTO Tyyppi  VALUES (9, 'Rasvat ja öljyt');
+INSERT INTO Tyyppi  VALUES (10, 'Mausteet ja yrtit');
+INSERT INTO Tyyppi  VALUES (11, 'Kastikkeet');
+INSERT INTO Tyyppi  VALUES (12, 'Makeutus');
+INSERT INTO Tyyppi  VALUES (13, 'Muut');
 
 // Aines //
 
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (1, "Paprika", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (2, "Kidneypapu", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (8, "Kuha", "false");
-
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (4, "Kaurahiutale", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (13, "Vesi", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (9, "Oliiviöljy", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (12, "Tumma siirappi", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (10, "Suola", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (2, "Pellavansiemen", "true");
-INSERT INTO Aines (tyyppi_id, nimi, vegaaninen) VALUES (2, "Hampunsiemen", "true");
+INSERT INTO Aines  VALUES (1, 1, 'Paprika', 'true');
+INSERT INTO Aines  VALUES (2, 2, 'Kidneypapu', 'true');
+INSERT INTO Aines  VALUES (3, 8, 'Kuha', 'false');
+INSERT INTO Aines  VALUES (4, 4, 'Kaurahiutale', 'true');
+INSERT INTO Aines  VALUES (5, 13, 'Vesi', 'true');
+INSERT INTO Aines  VALUES (6, 9, 'Oliiviöljy', 'true');
+INSERT INTO Aines  VALUES (7, 12, 'Tumma siirappi', 'true');
+INSERT INTO Aines  VALUES (8, 10, 'Suola', 'true');
+INSERT INTO Aines  VALUES (9, 2, 'Pellavansiemen', 'true');
+INSERT INTO Aines  VALUES (10, 2, 'Hampunsiemen', 'true');
 
 // Resepti //
 
-INSERT INTO Resepti (nimi, annoksia, ohje, vegaaninen) VALUES ("Helppo kauraleipä", 16, "Sekoita kaikki aineet keskenään kulhossa ja levitä taikina tasaisesti leivinpaperin päälle uunipellille. Paista 250-asteisessa uunissa noin 12-15 minuuttia, kunnes leipä on hieman ruskistunut reunoilta. Leipä on parhaimmillaan tuoreena.", "true");
+INSERT INTO Resepti VALUES (1, 'Helppo kauraleipä', 16, 'Sekoita kaikki aineet keskenään kulhossa ja levitä taikina tasaisesti leivinpaperin päälle uunipellille. Paista 250-asteisessa uunissa noin 12-15 minuuttia, kunnes leipä on hieman ruskistunut reunoilta. Leipä on parhaimmillaan tuoreena.', 'true');
 
 // ReseptiAines //
 
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 4, 4, 6, 1);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 5, 4, 4, 2);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 6, 4, 0.5, 3);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 7, 3, 1, 4);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 8, 2, 1, 5);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 9, 3, 1, 6);
-INSERT INTO ReseptiAines (resepti_id, aines_id, yksikko_id, maara, jarjestys) VALUES (1, 10, 3, 1, 7);
+INSERT INTO ReseptiAines VALUES (1, 4, 4, 6, 1);
+INSERT INTO ReseptiAines VALUES (1, 5, 4, 4, 2);
+INSERT INTO ReseptiAines VALUES (1, 6, 4, 0.5, 3);
+INSERT INTO ReseptiAines VALUES (1, 7, 3, 1, 4);
+INSERT INTO ReseptiAines VALUES (1, 8, 2, 1, 5);
+INSERT INTO ReseptiAines VALUES (1, 9, 3, 1, 6);
+INSERT INTO ReseptiAines VALUES (1, 10, 3, 1, 7);
