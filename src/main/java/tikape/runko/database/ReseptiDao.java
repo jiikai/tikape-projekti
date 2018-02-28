@@ -82,7 +82,7 @@ public class ReseptiDao implements Dao<Resepti, Integer> {
             try (Connection conn = database.getConnection()) {
                 PreparedStatement stmt = conn.prepareStatement(
                         "INSERT INTO Resepti VALUES (?, ?, ?, ?)");
-								stmt.setInt(1, object.getId());				
+		stmt.setInt(1, object.getId());				
                 stmt.setString(2, object.getNimi());
                 stmt.setInt(3, object.getAnnoksia());
                 stmt.setString(4, object.getOhje());

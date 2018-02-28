@@ -77,6 +77,7 @@ public class Main {
             aineksiaUudessaReseptissa++;
             reseptiAinesDao.saveOrUpdate(resaines);
             uusiResepti.setOhje(req.queryParams("ohje"));
+            reseptiDao.updateOhje(resepti);
             if (!(ainesDao.findOne(resaines.getAines_id()).isVegaaninen())) {
                 uusiResepti.setVegaaninen(false);
             }
@@ -86,7 +87,7 @@ public class Main {
         
         Spark.post("/uusireseptitallenna", (req, res) -> {
             uusiResepti.setOhje(req.queryParams("ohje"));
-            reseptiDao.saveOrUpdate(uusiResepti);
+            reseptiDao.updateOhje(uusiResepti);
             uusiResepti = null;
             aineksiaUudessaReseptissa = 0;
             res.redirect("/reseptit");
