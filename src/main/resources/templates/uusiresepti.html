@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Uuden reseptin lis‰ys</title>
+        <title>Uuden reseptin lis√§ys</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
         <b th:text="${resepti.nimi}">Reseptin nimi</b>
         <br />
-        Annoksia: <span th:text="${resepti.annoksia}">annosten lukum‰‰r‰</span>
+        Annoksia: <span th:text="${resepti.annoksia}">annosten lukum√§√§r√§</span>
         <br />
         <span th:text="${resepti.vegaaninenString}">onko vegaaninen</span>
         <br />
@@ -24,17 +24,17 @@
                     aines
                 </option>
             </select>
-            <label for="ainesMaara">M‰‰r‰: </label>
+            <label for="ainesMaara">M√§√§r√§: </label>
             <input id="ainesMaara" type="number" name="ainesMaara" value="1"/>
             <select name="yksikkoId">
                 <option th:each="yksikko: ${yksikot}" th:value="${yksikko}" th:text="${yksikko}">
                     yksikko
                 </option>
             </select>
-            <input type="submit"  name="lis‰‰" value="Lis‰‰ reseptiin"/>
+            <input type="submit"  name="lis√§√§" value="Lis√§√§ reseptiin"/>
         </form>
             <textarea name="ohje" rows="30" cols="50" >
-            Kirjoita ohje t‰h‰n...
+            Kirjoita ohje t√§h√§n...
             </textarea>
         <form method="POST" action="/uusireseptitallenna">
             <input type="submit" name="tallenna" value="Tallenna resepti tietokantaan"/>

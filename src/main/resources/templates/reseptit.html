@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <h1>Klikkaa resepti‰ avataksesi sen:</h1>
+        <h1>Klikkaa resepti√§ avataksesi sen:</h1>
 
         <ul>
             <li th:each="resepti: ${reseptit}">
@@ -15,13 +15,13 @@
                 
             </li>
         </ul>
-        <h2>Lis‰‰ uusi resepti tietokantaan</h2>
+        <h2>Lis√§√§ uusi resepti tietokantaan</h2>
         <form method="POST" action="/reseptit">
             <label for="nimi">Reseptin nimi: </label>
             <input id="nimi" type="text" name="nimi" required="required" />
-            <label for="annoksia">Annosten lukum‰‰r‰: </label>
+            <label for="annoksia">Annosten lukum√§√§r√§: </label>
             <input id="annoksia" type="number" name="annostenMaara" value="1"/>
-            <input type="submit" value="Lis‰‰ ainesosia ja kirjoita ohje..."/>
+            <input type="submit" value="Lis√§√§ ainesosia ja kirjoita ohje..."/>
         </form>
     </body>
 </html>

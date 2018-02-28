@@ -8,14 +8,14 @@
 
     <body>
         <form method="POST" action="/ainekset">
-            <input id="1" name="order" type="submit" value="J‰rjest‰ kategorioittain..." onclick="vaihdaTeksti()"/>
+            <input id="1" name="order" type="submit" value="J√§rjest√§ kategorioittain..." onclick="vaihdaTeksti()"/>
         </form>
         <script>
             function vaihdaTeksti() {
-                if (document.getElementById(1).value === "J‰rjest‰ kategorioittain...") {
-                    document.getElementById(1).value = "J‰rjest‰ aakkosittain...";
+                if (document.getElementById(1).value === "J√§rjest√§ kategorioittain...") {
+                    document.getElementById(1).value = "J√§rjest√§ aakkosittain...";
                 } else {
-                    document.getElementById(1).value = "J‰rjest‰ kategorioittain...";
+                    document.getElementById(1).value = "J√§rjest√§ kategorioittain...";
                 }
             }
         </script>
@@ -24,25 +24,25 @@
                  <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span></a>
             </li>
         </ul>
-        <h2>Lis‰‰ uusi ruoka-aine tietokantaan</h2>
+        <h2>Lis√§√§ uusi ruoka-aine tietokantaan</h2>
         <form method="POST" action="/ainekset">
             <input type="text" name="nimi"/>
             <select name="tyyppi">
-                  <option value="1">Hedelm‰t ja vihannekset</option>
+                  <option value="1">Hedelm√§t ja vihannekset</option>
                   <option value="2">Palkokasvit</option>
-                  <option value="3">P‰hkin‰t ja siemenet</option>
+                  <option value="3">P√§hkin√§t ja siemenet</option>
                   <option value="4">Viljatuotteet</option>
                   <option value="5">Muut kasvituotteet</option>
                   <option value="6">Maitotuotteet</option>
                   <option value="7">Lihatuotteet</option>
-                  <option value="8">Kala ja ‰yri‰iset</option>
-                  <option value="9">Rasvat ja ˆljyt</option>
+                  <option value="8">Kala ja √§yri√§iset</option>
+                  <option value="9">Rasvat ja √∂ljyt</option>
                   <option value="10">Mausteet ja yrtit</option>
                   <option value="11">Kastikkeet</option>
                   <option value="12">Makeutus</option>
                   <option value="13">Muut</option>
             </select>
-            <input type="submit" value="Lis‰‰"/>
+            <input type="submit" value="Lis√§√§"/>
         </form>
     </body>
 </html>

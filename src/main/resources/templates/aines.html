@@ -9,7 +9,7 @@
     <body>
         <h1 th:text="${aines.nimi}">Aineksen nimi</h1>
         <h2>Kategoria: </h2><h2 th:text="${aines.tyyppiString}"> aineksen tyyppi</h2>
-		<h3>Aines esiintyy seuraavissa resepteissä: </h3>
+		<h3>Aines esiintyy seuraavissa resepteissÃ¤: </h3>
 		<ul>
                 <li th:each="resepti: ${reseptit}">
                     <span th:text="${resepti.nimi}">reseptin nimi</span> <a th:href="${'/resepti/' + resepti.id}">linkki</a>
