@@ -7,21 +7,16 @@
     </head>
 
     <body>
-        <form method="POST" action="/aineksetjarjestys">
-            <input id="1" name="order" type="submit" value="Järjestä kategorioittain/aakkosittain..." onclick="vaihdaTeksti()"/>
+        <form method="POST" action="/aineksetuusijarjestys">
+            <<select name="order">
+                  <option value="1">Järjestys aakkosittain</option>
+                  <option value="2">Järjestys kategorioittain</option>
+            </select>
+            <input id="1" type="submit" value="Järjestä..."/>
         </form>
-        <script>
-            function vaihdaTeksti() {
-                if (document.getElementById(1).value === "Järjestä kategorioittain/aakkosittain...") {
-                    document.getElementById(1).value = "Järjestä aakkosittain...";
-                } else {
-                    document.getElementById(1).value = "Järjestä kategorioittain/aakkosittain...";
-                }
-            }
-        </script>
         <ul>
             <li th:each="aines: ${ainekset}">
-                 <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span></a>
+                <a th:href="${'/aines/' + aines.id}"><span th:text="${aines.nimi}">aineksen nimi</span>  Kategoria: <span th:text="${aines.tyyppiString}">aineksen tyyppi<</span></a>
             </li>
         </ul>
         <h2>Lisää uusi ruoka-aine tietokantaan</h2>

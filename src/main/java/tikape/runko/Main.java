@@ -15,7 +15,7 @@ import tikape.runko.domain.*;
 
 public class Main {
     
-    static boolean jarjestysAakkosissa = true;
+    static int order = 1;
     static Resepti uusiResepti = null;
     static int aineksiaUudessaReseptissa = 0;
     static List<String> yksikot = Arrays.stream(Yksikko.values())
@@ -105,7 +105,7 @@ public class Main {
         Spark.get("/ainekset", (req, res) -> {
             HashMap map = new HashMap<>();
             List<Aines> findAll = ainesDao.findAll();
-            if (jarjestysAakkosissa == false) {
+            if (order == 2) {
                 findAll.sort(Comparator.comparing(a -> a.getTyyppi().ordinal()));
             }
             map.put("ainekset", findAll);
@@ -114,13 +114,16 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/ainekset", (req, res) -> {
-            if (req.queryParams("order").equals("Järjestä aakkosittain...")) {
-                jarjestysAakkosissa = !(jarjestysAakkosissa);
-                res.redirect("/ainekset");
-            }
             Aines aines = new Aines(database.tableSize("Aines") + 1, Integer.parseInt(req.queryParams("tyyppi")), req.queryParams("nimi"));
             ainesDao.saveOrUpdate(aines);
             
+            res.redirect("/ainekset");
+            return "";
+        });
+        
+         Spark.post("/ainekset", (req, res) -> {
+            int neworder = Integer.parseInt(req.queryParams("order"));
+            order = neworder;         
             res.redirect("/ainekset");
             return "";
         });
