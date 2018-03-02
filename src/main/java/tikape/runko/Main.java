@@ -70,13 +70,12 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/uusiresepti", (req, res) -> {
-            Resepti resepti = uusiResepti;
             int yksikkoId = Yksikko.valueOf(req.queryParams("yksikkoId").toUpperCase()).ordinal() + 1;
-            ReseptiAines resaines = new ReseptiAines(resepti.getId(), Integer.parseInt(req.queryParams("ainesId")), 
+            ReseptiAines resaines = new ReseptiAines(uusiResepti.getId(), Integer.parseInt(req.queryParams("ainesId")), 
                     yksikkoId, Float.parseFloat(req.queryParams("ainesMaara")), aineksiaUudessaReseptissa + 1);
             aineksiaUudessaReseptissa++;
             reseptiAinesDao.saveOrUpdate(resaines);
-            uusiResepti.setOhje(req.queryParams("ohje"));
+            uusiResepti.setOhje(req.params("ohje"));
             reseptiDao.updateOhje(uusiResepti);
             if (!(ainesDao.findOne(resaines.getAines_id()).isVegaaninen())) {
                 uusiResepti.setVegaaninen(false);
@@ -88,6 +87,7 @@ public class Main {
         Spark.post("/uusireseptitallenna", (req, res) -> {
             uusiResepti.setOhje(req.queryParams("ohje"));
             reseptiDao.updateOhje(uusiResepti);
+            reseptiDao.saveOrUpdate(uusiResepti);
             uusiResepti = null;
             aineksiaUudessaReseptissa = 0;
             res.redirect("/reseptit");

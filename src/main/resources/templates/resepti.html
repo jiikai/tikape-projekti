@@ -1,9 +1,13 @@
+<!-- Look of this document is driven by a CSS referenced by an href attribute. See http://www.w3.org/TR/xml-stylesheet/ -->
+<link rel="StyleSheet" type="text/css" href="http://JKDESK:8082/resource/file%3A/D%3A/Files/Dropbox/Git/src/main/resources/templates/global.css" media="screen" >
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Otsikko</title>
+        <title th:text="${resepti.nimi}">Reseptin nimi</title>
         <meta charset="utf-8" />
+        <!-- include css -->
+        <link rel="stylesheet" type="text/css" href="@{/css/global.css}"/>
     </head>
 
     <body>
