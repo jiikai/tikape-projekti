@@ -15,6 +15,7 @@ import tikape.runko.domain.*;
 
 public class Main {
     
+    
     static int order = 1;
     static Resepti uusiResepti = null;
     static int aineksiaUudessaReseptissa = 0;
@@ -37,6 +38,8 @@ public class Main {
         ReseptiDao reseptiDao = new ReseptiDao(database);
         ReseptiAinesDao reseptiAinesDao = new ReseptiAinesDao(database);
         
+        Spark.staticFileLocation("/templates");
+        
         Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("viesti", "tervehdys");
@@ -49,6 +52,8 @@ public class Main {
             map.put("reseptit", reseptiDao.findAll());
             return new ModelAndView(map, "reseptit");
         }, new ThymeleafTemplateEngine());
+        
+        
         
         Spark.post("/reseptit", (req, res) -> {
             Resepti resepti = new Resepti(database.getFreeId("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "Kirjoita ohje tähän...");
