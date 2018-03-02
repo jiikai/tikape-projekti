@@ -8,13 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import spark.ModelAndView;
 import spark.Spark;
-import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import tikape.runko.database.*;
 import tikape.runko.domain.*;
 
-public class Main {
-    
+
+public class Main  {
     
     static int order = 1;
     static Resepti uusiResepti = null;
@@ -38,7 +37,7 @@ public class Main {
         ReseptiDao reseptiDao = new ReseptiDao(database);
         ReseptiAinesDao reseptiAinesDao = new ReseptiAinesDao(database);
         
-        Spark.staticFileLocation("/templates");
+        Spark.staticFileLocation("/src/main/resources/templates/static");
         
         Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -59,6 +58,7 @@ public class Main {
             Resepti resepti = new Resepti(database.getFreeId("Resepti") + 1, req.queryParams("nimi"), Integer.parseInt(req.queryParams("annostenMaara")), "Kirjoita ohje tähän...");
             uusiResepti = resepti;
             reseptiDao.saveOrUpdate(resepti);
+            
 
             res.redirect("/uusiresepti");
             return "";
@@ -127,12 +127,14 @@ public class Main {
             return "";
         });
         
-         Spark.post("/aineksetuusijarjestys", (req, res) -> {
-            int neworder = Integer.parseInt(req.queryParams("order"));
-            order = neworder;         
-            res.redirect("/ainekset");
-            return "";
-        });
+//Not implemented:
+        
+//         Spark.post("/aineksetuusijarjestys", (req, res) -> {
+//            int neworder = Integer.parseInt(req.queryParams("order"));
+//            order = neworder;         
+//            res.redirect("/ainekset");
+//            return "";
+//        });
 
         Spark.get("/aines/:id", (req, res) -> {
             HashMap map = new HashMap<>();
